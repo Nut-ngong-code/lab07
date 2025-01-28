@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 2</title>
+</head>
+<body>
+    <!-- input field และปุ่มสำหรับรับชื่อ -->
+     <input type="text" id="nameInput" placeholder="กรุณาใส่ชื่อ">
+     <button onclick="greetUser()">ทักทาย</button>
+     <p id="greetUser"></p>
+
+     <!-- javaScript -->
+      <script>
+        function greetUser(){
+            // รับค่า input
+            let name = document.getElementById("nameInput").value;
+            // เงื่อนไข
+            if (name) {
+                document.getElementById("greetUser").textContent = "สวัดดีคุณ" + name;
+            }else {
+                alert("กรุณาใส่ชื่อก่อน");
+            }
+        }
+      </script>
+</body>
+</html>
