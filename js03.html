@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 3</title>
+</head>
+<body>
+    <!-- สร้างฟอร์มสำหรับคำนวนสี่เหลี่ยม -->
+     <h3>คำนวนพื้นที่ 4 เหลี่ยม</h3>
+     <p>กว้าง <input type="number" id="w"></p><br>
+     <p>ยาว <input type="number" id="h"></p><br>
+     <button onclick="cal()">คำนวน</button>
+     <p id="ans"></p>
+     <script>
+        function cal(){
+            // input w,h
+            let w = document.getElementById("w").value;
+            let h = document.getElementById("h").value;
+            // คำนวน
+            let area = w * h;
+            document.getElementById("ans").textContent = "พื้นที่สี่เหลี่ยม = " + area + "ตารางหน่วย";
+        }
+     </script>
+</body>
+</html>
