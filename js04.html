@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 4</title>
+</head>
+<body>
+    <!-- array and loop -->
+     <h3>รายการสินค้า</h3>
+     <button onclick="showPro()">แสดงรายการสินค้า</button>
+     <ul id="pro_list"></ul>
+     <script>
+        function showPro(){
+            // array สินค้า
+            const products = ["กล้วย","กล้วย","ส้ม","มะม่วง"];
+            let pro_list = document.getElementById("pro_list");
+            pro_list.innerHTML = ""; // ล้างรายการเดิม
+            // loop
+            for (let i=0; i < products.length; i++){
+                let li = document.createElement("li");
+                li.textContent = products[i];
+                pro_list.appendChild(li);
+            }
+        }
+     </script>
+</body>
+</html>
