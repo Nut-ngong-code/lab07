@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ตัวอย่างที่ 10</title>
+    <style>
+      #gameArea {
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        position: relative;
+      }
+      #target {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        position: absolute;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- สร้างเกมง่ายๆ -->
+    <h3>เกมคลิกเป้า</h3>
+    <p>คะแนน: <span id="score">0</span></p>
+    <p>
+      เวลา:
+      <span id="start_count" style="margin-left: 20px; font-size: xx-large"
+        >30</span
+      ><span> วินาที</span>
+    </p>
+    <div id="gameArea">
+      <div id="target" onclick="hitTarget()"></div>
+      <div id="GameOver" style="margin: 110px; margin-bottom: 10px"></div>
+      <div style="margin: 110px; margin-top: 2px" id="start">
+        <button
+          style="margin-bottom: 10px; font-size: x-large"
+          onclick="start()"
+        >
+          start
+        </button>
+        <button style="margin-left: 8px" onclick="reset()">reset</button>
+      </div>
+    </div>
+
+    <script>
+      let score = 0;
+      let seconds = 30;
+      let game = false;
+
+      function hitTarget() {
+        
+          // เพิ่มคะแนน
+          score++;
+          document.getElementById("score").textContent = score;
+
+          // สุ่มตำแหน่ง
+          let gameArea = document.getElementById("gameArea");
+          let target = document.getElementById("target");
+
+          let maxX = gameArea.offsetWidth - target.offsetHeight;
+          let maxY = gameArea.offsetHeight - target.offsetWidth;
+
+          let newX = Math.floor(Math.random() * maxX);
+          let newY = Math.floor(Math.random() * maxY);
+
+          target.style.left = newX + "px";
+          target.style.top = newY + "px";
+        
+      }
+      function start() {
+
+        let time_count;
+        document.getElementById("start").style.display = "none";
+        document.getElementById("GameOver").textContent = "";
+        time_count = setInterval(function () {
+          seconds--;
+          document.getElementById("start_count").textContent = seconds;
+
+          if (seconds == 0) {
+            clearInterval(time_count);
+            document.getElementById("GameOver").textContent = "GameOver!!";
+            document.getElementById("start").style.display = "block";
+          }
+        }, 100);
+      }
+      function reset() {
+        score = 0;
+        seconds = 30;
+
+        document.getElementById("GameOver").textContent = "";
+        document.getElementById("start_count").textContent = seconds;
+        document.getElementById("score").textContent = score;
+      }
+    </script>
+  </body>
+</html>
