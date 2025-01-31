@@ -9,6 +9,7 @@
     <div id="example12">
         <h3>12. ตัวนับจำนวนคลิก</h3>
         <button onclick="increment_count()">คลิกที่นี่</button>
+        <button onclick="reset()">Reset</button>
         <p>จำนวนคลิก: <span id="count">0</span></p>
 
         <script>
@@ -18,6 +19,11 @@
                 // เพิ่มตัวนับ
                 click_count++;
                 document.getElementById("count").textContent = click_count;
+            }
+
+            function reset(){
+                click_count = 0;
+                document.getElementById("count").textContent = click_count; 
             }
         </script>
     </div>
