@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 13</title>
+    <style>
+        .shopping_list li {
+            margin:5px 0;
+        }
+        #shopping_list button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="example13">
+        <h3>13. รายการซื้อของ</h3>
+        <input type="text" id="item_input" placeholder="ใส่ชื่อสินค้า">
+        <button onclick="add_item()">เพิ่มรายการ</button>
+        <ul id="shopping_list"></ul>
+        
+
+        <script>
+            function add_item(){
+                // รับค่า input
+                const input = document.getElementById("item_input");
+                // ดึงค่าจาก  input , trim ลบช่องว่างหน้าหลัง
+                const item_name = input.value.trim();
+                // ตรวจสอบข้อความว่างหรือไม่
+                if (item_name !== ""){
+                    // สร้าง element li
+                    const li = document.createElement("li");
+                    // เพิ่มชื่อใน li
+                    li.textContent = item_name;
+                    // สร้าง element ปุ่ม ลบ
+                    const delete_btn = document.createElement("button");
+                    delete_btn.textContent = "ลบ";
+                    delete_btn.onclick = function(){
+                        li.remove();
+                    };
+                    // เพิ่มปุ่มลบในรายการ
+                    li.appendChild(delete_btn);
+                    document.getElementById("shopping_list").appendChild(li);
+                    // ล้างค่า input
+                    input.value = "";
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
