@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 11</title>
+    <style>
+        .color-box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            margin: 10px 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="example11">
+        <h3>11. ปุ่มเปลี่ยนสี</h3>
+        <button onclick="changColor()">เปลี่ยนสี</button>
+        <div id="colorBox" class="color-box"></div>
+        <script>
+            function get_random_color(){
+                // สุ่มค่า RGB
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                // ส่งค่าในรูป RGB
+                return `rgb(${r},${g},${b})`;
+            }
+
+            function changColor(){
+                const box = document.getElementById("colorBox");
+                // เปลียนสีเป็นสีที่สุ่ม
+                box.style.backgroundColor = get_random_color();
+            }
+        </script>
+    </div>
+</body>
+</html>
