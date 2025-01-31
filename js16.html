@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 16</title>
+    <style>
+        .slide_show{
+            text-align: center;
+        }
+        .slide_show img{
+            max-width: 400px;
+            height: 300px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="example16">
+        <h3>16. สไตล์การโชว์รูป</h3>
+        <div class="slide_show">
+            <div>
+                <img id="slide_img" src="img/02_Shinjuku.jpg" alt="slide_show">
+            </div>
+            <button onclick="changeSlide(-1)">ก่อนหน้า</button>
+            <button onclick="changeSlide(1)">กถัดไป</button>
+        </div>
+
+        <script>
+            const img = [
+                "img/02_Shinjuku.jpg",
+                "img/A6408089_1 - Copy.jpg"
+            ];
+            let current_slide = 0;
+            // ฟังก์ชันเปลี่ยนสไลด์
+            function changeSlide(direction){
+                // คำนวน index ของสไลด์
+                current_slide = (current_slide + direction + img.length) % img.length;
+                // อัพเดทรูป
+                document.getElementById("slide_img").src = img[current_slide];
+            }
+        </script>
+
+    </div>
+</body>
+</html>
