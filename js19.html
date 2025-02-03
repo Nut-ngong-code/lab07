@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 19</title>
+    <style>
+        .tabs{
+            margin: 10px 0;
+        }
+        .tab-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="example19">
+        <h3>19.แท็บเนื้อหา</h3>
+        <div class="tabs">
+            <button class="tab-button" onclick="show_tab(0)">แท็บ 1</button>
+            <button class="tab-button" onclick="show_tab(1)">แท็บ 2</button>
+            <button class="tab-button" onclick="show_tab(2)">แท็บ 3</button>
+
+            <div class="tab-content">เนื้อหาแท็บที่ 1 </div>
+            <div class="tab-content">เนื้อหาแท็บที่ 2 </div>
+            <div class="tab-content">เนื้อหาแท็บที่ 3 </div>
+        </div>
+
+        <script>
+            function show_tab(tabIndex){
+                // รับelement 
+                const content = document.getElementsByClassName("tab-content");
+                const button = document.getElementsByClassName("tab-button");
+
+                // งซ่อนเนื้อหาทั้งหมดและ ลบ class active
+            for(let i = 0 ; i < content.length; i++){
+                content[i].style.display = "none";
+                button[i].classList.remove("active");
+                }
+                // แสดงเนื้อหาที่เลือก และเพิ่ม class active
+                content[tabIndex].style.display = "block";
+                button[tabIndex].classList.add("active");
+            }
+            // แสดงแท็บแรก
+            show_tab(0);
+        </script>
+    </div>
+</body>
+</html>
