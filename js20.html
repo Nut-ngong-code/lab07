@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตัวอย่างที่ 20</title>
+    <style>
+        #todo_list li{
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .done {
+            text-decoration: line-through;
+            color: #dc0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="example20">
+        <h3>20. รายการสิ่งของที่ต้องทำ (เก็บใน local storage)</h3>
+        <input type="text" id="todo_input" placeholder="เพิ่มรายการ...">
+        <button onclick="addtodo()">เพิ่ม</button>
+        <ul id="todo_list"></ul>
+
+        <script>
+            // โหลดข้อมูลจาก local storage
+            let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+            // แสดงรายการ
+            function display_todo(){
+                const list = document.getElementById("todo_list");
+                list.innerHTML = "";
+                
+                todos.forEach((todo, index) => {
+                    const li = document.createElement("li");
+
+                    // สร้าง checkbox
+                    const checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.checked = todo.done;
+                    checkbox.onchange = () => ToggleTodo(index);
+
+                    // สร้าง span ข้อความ
+                    const span = document.createElement("spacer");
+                    span.textContent = todo.text;
+                    if (todo.done) span.classList.add("done");
+                    // สร้างปุ่มลบ
+                    const delete_btn = document.createElement("button");
+                    delete_btn.textContent = "ลบ";
+                    delete_btn.onclick = () => deleteTodo(index);
+
+                    // เพิ่ม element ลงใน li
+                    li.appendChild(checkbox);
+                    li.appendChild(span);
+                    li.appendChild(delete_btn);
+                    list.appendChild(li);
+                });
+
+                // บันทึกลง local storage
+                localStorage.setItem("todos", JSON.stringify(todos));
+            }
+
+            // เพิ่มรายหารใหม่
+            function addtodo(){
+                const input = document.getElementById("todo_input");
+                const text = input.value.trim();
+
+                if(text){
+                    todos.push({ text, done: false})
+                    input.value = "";
+                    display_todo();
+                }
+            }
+
+            // สลับสถานะรายการ
+            function ToggleTodo(index){
+                todos[index].done = !todos[index].done;
+                display_todo();
+            }
+
+            // ลบรายการ
+            function deleteTodo(index){
+                todos.splice(index, 1);
+                display_todo();
+            }
+
+            // แสดงหน้าแรก
+            display_todo();
+        </script>
+
+    </div>
+</body>
+</html>
