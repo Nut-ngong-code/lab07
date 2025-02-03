@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ตัวอย่างที่ 18</title>
+  </head>
+  <body>
+    <div id="example18">
+      <h3>18. ค้นหาและกรอกข้อมูล</h3>
+      <input
+        type="text"
+        id="search_input"
+        onkeyup="search_item()"
+        placeholder="ค้นหา..."
+      />
+      <ul id="item_list">
+        <li>แอปเปิ้ล</li>
+        <li>กล้วย</li>
+        <li>ส้ม</li>
+        <li>มะม่วง</li>
+        <li>สตอเบอรี่</li>
+      </ul>
+      <script>
+        // หาข้อมูล
+        function search_item() {
+          // รับค่าค้นหา
+          const search_text = document
+            .getElementById("search_input")
+            .value.toLowerCase();
+          // รับรายการ
+          const items = document
+            .getElementById("item_list")
+            .getElementsByTagName("li");
+
+          for (let item of items) {
+            const text = item.textContent.toLowerCase();
+            // ซ่อนและค้นหาข้อมูล
+            item.style.display = text.includes(search_text) ? "" : "none";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
